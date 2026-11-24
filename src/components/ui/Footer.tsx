@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { WordReveal } from "./Motion";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { PenLine } from "lucide-react";
@@ -23,9 +24,9 @@ export function Footer() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aviation-blue/30 to-transparent" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-14 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 48 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-6"
           >
             <div className="space-y-2">
@@ -33,7 +34,7 @@ export function Footer() {
                 Get in touch
               </span>
               <h2 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl md:text-[2rem] text-white leading-tight max-w-xl mx-auto">
-                Ready to work with us?
+                <WordReveal text="Ready to work with us?" />
               </h2>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">

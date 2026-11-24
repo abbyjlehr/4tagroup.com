@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import { WordReveal, ImageReveal } from "@/components/ui";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -27,13 +28,13 @@ export function ServiceCards() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_70%_20%,rgba(27,92,255,0.06),transparent_50%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.header
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-10 sm:mb-14"
         >
           <h2 className="font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-[2.25rem] leading-tight">
-            Training, consulting & quality assurance
+            <WordReveal text="Training, consulting & quality assurance" />
           </h2>
           <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
             End-to-end support for FAA, DoD, and international clients—from simulation and instruction to oversight and reporting.
@@ -52,20 +53,22 @@ export function ServiceCards() {
         {/* Different layout: one large card left, two stacked right (bento-style) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 48 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -3 }}
             className="relative flex flex-col rounded-2xl overflow-hidden lg:row-span-2 bg-white/70 dark:bg-white/60 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(10,31,68,0.08),0_2px_8px_rgba(255,255,255,0.5)_inset]"
           >
             <div className="relative h-44 sm:h-52 lg:h-64 shrink-0">
-              <Image
-                src={cardImages[0].src}
-                alt={cardImages[0].alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              <ImageReveal delay={0.15}>
+                <Image
+                  src={cardImages[0].src}
+                  alt={cardImages[0].alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </ImageReveal>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
             <div className="flex flex-col flex-1 p-6 sm:p-7">
@@ -86,20 +89,22 @@ export function ServiceCards() {
           {HOME_PAGE.services.slice(1).map((service, i) => (
             <motion.article
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 48 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.18 + i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1.1, delay: 0.18 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -3 }}
               className="relative flex flex-col rounded-2xl overflow-hidden bg-white/70 dark:bg-white/60 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(10,31,68,0.08),0_2px_8px_rgba(255,255,255,0.5)_inset]"
             >
               <div className="relative h-32 sm:h-36 shrink-0">
-                <Image
-                  src={cardImages[i + 1].src}
-                  alt={cardImages[i + 1].alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                <ImageReveal delay={0.25 + i * 0.12}>
+                  <Image
+                    src={cardImages[i + 1].src}
+                    alt={cardImages[i + 1].alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </ImageReveal>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
               <div className="flex flex-col flex-1 p-6 sm:p-7">

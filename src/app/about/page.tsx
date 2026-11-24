@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SectionWrapper } from "@/components/ui";
+import { SectionWrapper, ImageReveal } from "@/components/ui";
 import { CompanyProfile, FounderBio, PageHero } from "@/components/sections";
 import { ABOUT_PAGE, IMAGES } from "@/lib/constants";
 import { aboutMetadata } from "@/lib/metadata";
@@ -27,14 +27,14 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
-                <Image src={IMAGES.controlTower} alt="Air traffic control tower" fill className="object-cover" sizes="25vw" />
+                <ImageReveal delay={0.10}><Image src={IMAGES.controlTower} alt="Air traffic control tower" fill className="object-cover" sizes="25vw" /></ImageReveal>
               </div>
               <div className="flex flex-col gap-3 pt-8">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
-                  <Image src={IMAGES.airplane} alt="Commercial aircraft" fill className="object-cover" sizes="25vw" />
+                  <ImageReveal delay={0.25}><Image src={IMAGES.airplane} alt="Commercial aircraft" fill className="object-cover" sizes="25vw" /></ImageReveal>
                 </div>
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
-                  <Image src={IMAGES.cockpit} alt="Aircraft cockpit" fill className="object-cover" sizes="25vw" />
+                  <ImageReveal delay={0.40}><Image src={IMAGES.cockpit} alt="Aircraft cockpit" fill className="object-cover" sizes="25vw" /></ImageReveal>
                 </div>
               </div>
             </div>

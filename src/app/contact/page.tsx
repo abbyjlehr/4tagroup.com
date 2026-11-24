@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Button } from "@/components/ui";
+import { Button, WordReveal } from "@/components/ui";
 import { PageHero } from "@/components/sections";
 import { SITE_CONFIG, CONTACT_PAGE, IMAGES } from "@/lib/constants";
 
@@ -111,11 +111,11 @@ export default function ContactPage() {
 
             {/* Contact info */}
             <motion.div
-              initial={{ opacity: 0, x: -16 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={formSectionInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h2 className="font-heading text-2xl font-bold text-navy mb-8">Get in touch</h2>
+              <h2 className="font-heading text-2xl font-bold text-navy mb-8"><WordReveal text="Get in touch" /></h2>
               <div className="space-y-3">
                 {contactInfo.map((item) => (
                   <a
@@ -143,12 +143,12 @@ export default function ContactPage() {
 
             {/* Form */}
             <motion.div
-              initial={{ opacity: 0, x: 16 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={formSectionInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
             >
-              <h2 className="font-heading text-2xl font-bold text-navy mb-6">Send a message</h2>
+              <h2 className="font-heading text-2xl font-bold text-navy mb-6"><WordReveal text="Send a message" /></h2>
 
               {status === "success" ? (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">

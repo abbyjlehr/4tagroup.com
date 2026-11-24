@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { SectionWrapper } from "@/components/ui";
+import { SectionWrapper, WordReveal, ParallaxBg } from "@/components/ui";
 import { PageHero } from "@/components/sections";
 import { SERVICES_PAGE, IMAGES } from "@/lib/constants";
 
@@ -29,10 +29,10 @@ export default function ServicesPage() {
           <SectionWrapper key={section.title} className="py-4 sm:py-6" delay={0}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <section className="relative min-h-[320px] sm:min-h-[380px] rounded-2xl overflow-hidden">
-              <Image src={image.src} alt="" fill className="object-cover" sizes="100vw" />
+              <ParallaxBg distance={50}><Image src={image.src} alt="" fill className="object-cover" sizes="100vw" /></ParallaxBg>
               <div className="absolute inset-0 bg-gradient-to-r from-navy/92 via-navy/80 to-navy/62" aria-hidden />
               <div className="relative z-10 flex flex-col justify-center min-h-[320px] sm:min-h-[380px] px-6 sm:px-10 md:px-12 py-12 sm:py-16 max-w-2xl">
-                <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-4 sm:mb-6">{section.title}</h2>
+                <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-4 sm:mb-6"><WordReveal text={section.title} /></h2>
                 <div className="space-y-3 sm:space-y-4">
                   {section.content.map((p, j) => (
                     <p key={j} className="text-white/85 leading-relaxed text-sm sm:text-base">{p}</p>
@@ -49,11 +49,11 @@ export default function ServicesPage() {
       <section className="py-4 sm:py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative min-h-[320px] sm:min-h-[360px] rounded-2xl overflow-hidden">
-          <Image src={IMAGES.runway} alt="" fill className="object-cover" sizes="100vw" />
+          <ParallaxBg distance={50}><Image src={IMAGES.runway} alt="" fill className="object-cover" sizes="100vw" /></ParallaxBg>
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/78 to-navy/62" aria-hidden />
           <div className="relative z-10 flex flex-col justify-center min-h-[320px] sm:min-h-[360px] px-6 sm:px-10 md:px-12 py-12 sm:py-16 max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red mb-3">Training Programs</p>
-            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-6">{SERVICES_PAGE.trainingList.heading}</h2>
+            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-6"><WordReveal text={SERVICES_PAGE.trainingList.heading} /></h2>
             <ul className="space-y-2.5 sm:space-y-3">
               {SERVICES_PAGE.trainingList.items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-white/85 text-sm leading-relaxed">
@@ -73,11 +73,11 @@ export default function ServicesPage() {
       <SectionWrapper className="py-4 sm:py-6" delay={0}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative min-h-[320px] sm:min-h-[360px] rounded-2xl overflow-hidden">
-          <Image src={IMAGES.controlTower} alt="" fill className="object-cover" sizes="100vw" />
+          <ParallaxBg distance={50}><Image src={IMAGES.controlTower} alt="" fill className="object-cover" sizes="100vw" /></ParallaxBg>
           <div className="absolute inset-0 bg-gradient-to-r from-navy/92 via-navy/80 to-navy/62" aria-hidden />
           <div className="relative z-10 flex flex-col justify-center min-h-[320px] sm:min-h-[360px] px-6 sm:px-10 md:px-12 py-12 sm:py-16 max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red mb-3">Quality Assurance</p>
-            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-4 sm:mb-6">{SERVICES_PAGE.qaSection.heading}</h2>
+            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-4 sm:mb-6"><WordReveal text={SERVICES_PAGE.qaSection.heading} /></h2>
             <div className="space-y-3 sm:space-y-4">
               {SERVICES_PAGE.qaSection.content.map((p, i) => (
                 <p key={i} className="text-white/85 leading-relaxed text-sm sm:text-base">{p}</p>

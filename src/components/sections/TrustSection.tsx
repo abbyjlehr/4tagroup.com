@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import { WordReveal, ParallaxBg } from "@/components/ui";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,14 +34,16 @@ export function TrustSection() {
     >
       {/* The first block is ONLY the background — no card, no box */}
       <div className="absolute inset-0 w-full h-full">
-        <Image
-          src={IMAGES.controlTower}
-          alt=""
-          fill
-          className="object-cover object-center w-full h-full"
-          sizes="100vw"
-          priority
-        />
+        <ParallaxBg distance={80}>
+          <Image
+            src={IMAGES.controlTower}
+            alt=""
+            fill
+            className="object-cover object-center w-full h-full"
+            sizes="100vw"
+            priority
+          />
+        </ParallaxBg>
         <div
           className="absolute inset-0 bg-gradient-to-t from-navy/92 via-navy/60 to-navy/38"
           aria-hidden
@@ -49,13 +52,13 @@ export function TrustSection() {
 
       <div className="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-28">
         <motion.header
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-10 sm:mb-14"
         >
           <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl lg:text-[2.25rem] leading-tight drop-shadow-sm">
-            Veteran-led expertise. Mission-ready support.
+            <WordReveal text="Veteran-led expertise. Mission-ready support." />
           </h2>
           <p className="mt-4 text-white/90 text-base sm:text-lg max-w-2xl leading-relaxed">
             We bring decades of air traffic control experience to every engagement—training, consulting, and quality assurance for agencies that demand precision.
@@ -76,9 +79,9 @@ export function TrustSection() {
           {items.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 48 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1.1, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -3 }}
               className={`flex flex-col rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-7 ${i === 0 ? "sm:col-span-2" : ""}`}
             >

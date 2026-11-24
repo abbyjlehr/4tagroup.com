@@ -51,9 +51,9 @@ export function StatBar() {
           {ABOUT_PAGE.stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 36 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ delay: i * 0.15, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-center px-3 sm:px-6 lg:px-12 first:pl-0 last:pr-0 min-w-0"
             >
               <div className="font-heading text-3xl font-bold text-red sm:text-4xl md:text-5xl lg:text-6xl tabular-nums">

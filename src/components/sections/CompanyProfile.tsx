@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { WordReveal, ParallaxBg } from "@/components/ui";
 import { useRef } from "react";
 import Image from "next/image";
 import { ABOUT_PAGE, IMAGES } from "@/lib/constants";
@@ -50,27 +51,29 @@ export function CompanyProfile() {
     <section ref={ref} className="relative py-10 sm:py-14 md:py-16 overflow-hidden">
       {/* Background: image from section above (FounderBio) */}
       <div className="absolute inset-0">
-        <Image
-          src={IMAGES.people}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority={false}
-        />
+        <ParallaxBg distance={80}>
+          <Image
+            src={IMAGES.people}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority={false}
+          />
+        </ParallaxBg>
         <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy/75 to-navy/65" aria-hidden />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(27,92,255,0.15),transparent_50%)]" aria-hidden />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.header
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
           <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-3">
-            {companyProfile.heading}
+            <WordReveal text={companyProfile.heading} />
           </h2>
           <p className="text-base text-white/80 font-medium">{companyProfile.subheading}</p>
         </motion.header>
@@ -81,12 +84,12 @@ export function CompanyProfile() {
             return (
               <motion.article
                 key={d.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 48 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{
-                  duration: 0.45,
-                  delay: 0.06 + i * 0.06,
-                  ease: [0.25, 0.46, 0.45, 0.94],
+                  duration: 1.1,
+                  delay: 0.06 + i * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 whileHover={reduceMotion ? undefined : { y: -6, scale: 1.02 }}
                 className={`group relative flex flex-col rounded-3xl overflow-hidden p-6 sm:p-7 text-left focus-within:ring-2 focus-within:ring-aviation-blue/40 focus-within:ring-offset-2 focus-within:ring-offset-navy/50
