@@ -69,9 +69,6 @@ export function CompanyProfile() {
           transition={{ duration: 0.4 }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-aviation-blue/90 mb-3">
-            Company Info
-          </p>
           <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-3">
             {companyProfile.heading}
           </h2>
