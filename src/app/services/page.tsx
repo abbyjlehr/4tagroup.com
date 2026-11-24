@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { SectionWrapper } from "@/components/ui";
+import { PageHero } from "@/components/sections";
 import { SERVICES_PAGE, IMAGES } from "@/lib/constants";
 
 const sectionImages = [
@@ -13,36 +12,15 @@ const sectionImages = [
 ];
 
 export default function ServicesPage() {
-  const heroRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true });
-
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-navy overflow-hidden" style={{ paddingTop: "max(5rem, calc(5rem + env(safe-area-inset-top)))" }}>
-        <Image
-          src={IMAGES.runway}
-          alt="Aircraft on runway"
-          fill
-          priority
-          className="object-cover opacity-55"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/88 via-navy/72 to-navy/38" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28" ref={heroRef}>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4 }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red mb-4">Our Services</p>
-            <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl leading-tight">
-              {SERVICES_PAGE.headline}
-            </h1>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        label="Our Services"
+        headline={SERVICES_PAGE.headline}
+        subheadline={SERVICES_PAGE.subheadline}
+        image={IMAGES.runway}
+        imageAlt="Air traffic control tower at dusk"
+      />
 
       {/* Service sections — image background with text overlay */}
       {SERVICES_PAGE.sections.map((section, i) => {

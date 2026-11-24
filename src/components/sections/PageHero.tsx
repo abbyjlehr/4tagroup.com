@@ -1,0 +1,82 @@
+"use client";
+
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+
+interface PageHeroProps {
+  /** Short page name shown above the headline, e.g. "About". */
+  label: string;
+  headline: string;
+  subheadline?: string;
+  image: string;
+  imageAlt: string;
+  /** CSS object-position for the photo, e.g. "center 30%". */
+  imagePosition?: string;
+}
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+/** Full-bleed subpage hero, styled to match the home page hero. */
+export function PageHero({ label, headline, subheadline, image, imageAlt, imagePosition = "center" }: PageHeroProps) {
+  const reduce = useReducedMotion();
+
+  return (
+    <section
+      className="relative flex items-end bg-navy overflow-hidden min-h-[520px] sm:min-h-[600px] lg:min-h-[640px]"
+      style={{ paddingTop: "max(5rem, calc(5rem + env(safe-area-inset-top)))" }}
+    >
+      <motion.div
+        className="absolute inset-0"
+        initial={reduce ? false : { scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.2, ease }}
+      >
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: imagePosition }}
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-navy/10" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/20 to-navy/30" aria-hidden />
+
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20 md:pb-24">
+        <div className="max-w-3xl">
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 mb-5 sm:mb-7"
+          >
+            <span className="inline-block w-8 h-0.5 bg-red" aria-hidden />
+            {label}
+          </motion.p>
+
+          <motion.h1
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="font-heading text-4xl font-bold text-white sm:text-5xl md:text-6xl leading-[1.1] tracking-tight text-balance"
+          >
+            {headline}
+          </motion.h1>
+
+          {subheadline && (
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.1 }}
+              className="mt-4 sm:mt-6 text-base text-white/75 leading-relaxed sm:text-lg max-w-[520px]"
+            >
+              {subheadline}
+            </motion.p>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -51,6 +51,8 @@ export const ABOUT_PAGE = {
   intro:
     "The Fortier Group is comprised of an experienced team of professionals ready to provide solutions to Air Traffic Management and Aviation Support for missions worldwide.",
   headline: "Learn About Our Air Traffic Control Training Company",
+  subheadline:
+    "Experienced air traffic controllers delivering training and support to FAA, DoD, and international clients since 1994.",
   body: "The Fortier Group was founded with the idea that the best instruction for Air Traffic Controllers comes from experienced, accomplished Air Traffic Controllers, those that have proven themselves over time. We are proud of our Instructors and Engineers and will continue to provide exceptional training on ATC systems and excellent solutions for your Air Traffic and Safety concerns.",
   founder: {
     heading: "Founder",
@@ -83,6 +85,8 @@ export const ABOUT_PAGE = {
 
 export const SERVICES_PAGE = {
   headline: "Providing a Wide Array of Air Traffic and Safety Solutions",
+  subheadline:
+    "ATC systems training, safety management, and consulting for FAA, DoD, and international clients.",
   sections: [
     {
       title: "ATC Systems Training",

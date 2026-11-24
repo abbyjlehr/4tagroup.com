@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SectionWrapper } from "@/components/ui";
-import { CompanyProfile, FounderBio, AboutHeroContent } from "@/components/sections";
+import { CompanyProfile, FounderBio, PageHero } from "@/components/sections";
 import { ABOUT_PAGE, IMAGES } from "@/lib/constants";
 import { aboutMetadata } from "@/lib/metadata";
 
@@ -9,23 +9,13 @@ export const metadata = aboutMetadata;
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="relative bg-navy overflow-hidden" style={{ paddingTop: "max(5rem, calc(5rem + env(safe-area-inset-top)))" }}>
-        <Image
-          src={IMAGES.biplane}
-          alt="Vintage aircraft representing aviation heritage"
-          fill
-          priority
-          className="object-cover opacity-55"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/88 via-navy/72 to-navy/38" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/55" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28">
-          <AboutHeroContent headline={ABOUT_PAGE.headline} />
-        </div>
-      </section>
+      <PageHero
+        label="About The Fortier Group"
+        headline={ABOUT_PAGE.headline}
+        subheadline={ABOUT_PAGE.subheadline}
+        image={IMAGES.biplane}
+        imageAlt="Passenger jet on approach over the mountains"
+      />
 
       {/* Intro text + image mosaic */}
       <SectionWrapper className="py-10 sm:py-14 md:py-16 bg-white">

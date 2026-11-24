@@ -4,4 +4,4 @@ export { StatBar } from "./StatBar";
 export { TrustSection } from "./TrustSection";
 export { CompanyProfile } from "./CompanyProfile";
 export { FounderBio } from "./FounderBio";
-export { AboutHeroContent } from "./AboutHeroContent";
+export { PageHero } from "./PageHero";
